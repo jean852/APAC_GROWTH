@@ -30,6 +30,9 @@
   opacity: 0;
   transition: all 0.5s ease;
 }
+.logo_name {
+  white-space: nowrap;
+}
 .sidebar .logo-details .logo_name{
   color: #fff;
   font-size: 20px;
@@ -165,7 +168,7 @@
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i{
   transition: all 0.5s ease;
-  color: #ff8400;
+  color: #11101D;
 }
 .sidebar li i{
   height: 50px;
