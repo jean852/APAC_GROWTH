@@ -1,29 +1,68 @@
 <%= render "shared/navbarm" %>
-<div class="flex-container">
+<div class="flex-container" id="backdrop">
   <div class="flex-items">
     <%= render "shared/navbar2" %>
   </div>
   <div class="flex-items">
     <div class="flex-container-sec">
+
       <div class="flex-items-sec">
         <%# MAIN CONTENT GOES HERE / WITH CSSGRID %>
 
+
+        <%# TO BE REPLACED BY A FLEXBOX GRID SYSTEM %>
+        <%# -------------------------------------- %>
         <div class="dash-container">
+
           <div class="section-title">
             <h1>Growth Dashboard</h1>
-            <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
           </div>
-          <div class="main-banner"></div>
-          <div class="proposal-box"></div>
-          <div class="project-box"></div>
-          <div class="calendar-box"></div>
+
+          <div class="dash-card main-banner">
+            <div class="welcome-message">
+              <h2>Welcome back, Jeremy</h2>
+              <p>We noticed that you have no project yet. Create a Proposal today so our Experts can help you meet with potentials client and partners in Asia.</p>
+              <button type="button" class="btn btn-primary">Create my first RFP</button>
+            </div>
+            <div class="welcome-picture">
+              <%= image_tag("hongkong", size: "300", id: "dash-picture" ) %>
+            </div>
+          </div>
+
+          <div class="components-box">
+            <div class="left-components">
+              <div class="dash-card top-left-component">
+                <%# RFP BOX %>
+
+
+              </div>
+              <div class="dash-card bottom-left-component">
+                <%# PROJECT BOX %>
+
+              </div>
+            </div>
+            <div class="dash-card right-component">
+                <%# BUSINESS CALENDAR %>
+
+            </div>
+          </div>
+
+          <div class="figures-box">
+
+
+          </div>
         </div>
+        <%# -------------------------------------- %>
 
       </div>
+
+      <%# MAKE SURE THIS PART CAN WRAP DOWN %>
       <div class="flex-items-sec">
         <%# RIGHT SIDE BAR %>
         <h1>Right side content</h1>
       </div>
+
+
     </div>
   </div>
 </div>

@@ -28,9 +28,9 @@
 
 .flex-items:nth-child(2) {
   // width: 100%;
-  display: block;
+  display: flex;
   flex:1 ;
-  flex-shrink: 0;
+  flex-shrink: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
@@ -51,18 +51,19 @@
 }
 
 .flex-items-sec:nth-child(1) {
-  display: block;
-  flex-wrap: wrap;
+  display: flex;
+  // flex-wrap: wrap;
   flex-grow: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
 }
 
 .flex-items-sec:nth-child(2) {
   width: 380px;
-  display: block;
+  // REMINDER TO USE THIS SECTION FOR THE STAY CONNECTED ELEMENTS AT LATER STAGE
+  display: none;
   flex-wrap: wrap;
   flex-grow: 0;
   flex-basis: auto;
@@ -71,57 +72,60 @@
   background-color: rgb(0, 255, 0);
 }
 
+// # FLEXBOX GRID FOR DASHBOARD CENTRAL ELEMENTS
 
-
-// # CSS GRID
 
 .dash-container {
   width: 90%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.2fr 0.6fr 1.6fr 1.6fr;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "section-title section-title"
-    "main-banner main-banner"
-    "proposal-box calendar-box"
-    "project-box calendar-box";
+  display: flex;
+  flex-direction: column;
+  // flex: 1;
 }
 
 .section-title {
-  grid-area: section-title;
-  background-color: aquamarine;
-  height: 100px;
- }
+  margin: 20px 0 20px 10px
+}
 
 .main-banner {
-  grid-area: main-banner;
-  background-color: rgb(255, 193, 127);
-  height: 330px;
- }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: space-between;
+  min-height: 100px;
 
-.proposal-box {
-  grid-area: proposal-box;
-  background-color: rgb(168, 127, 255);
-  height: 330px;
+  .welcome-message, .welcome-picture {
+    flex-grow: 1;
+    max-width: 60%;
+  }
+}
+
+#dash-picture {
+  margin: -100px 0 -50px 0;
+}
+
+
+.components-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.left-components, .right-component {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   min-width: 350px;
- }
+  // row-gap: 10px;
+}
 
-.project-box {
-  grid-area: project-box;
-  background-color: rgb(221, 127, 255);
-  height: 330px;
-  min-width: 350px;
- }
+.top-left-component, .bottom-left-component {
+  min-height: 300px;
+  // margin: 20px;
+}
 
 
-.calendar-box {
-  grid-area: calendar-box;
-  background-color: rgb(225, 255, 127);
-  height: 660px;
-  min-width: 350px;
- }
+
+// MEDIA QUERIES
