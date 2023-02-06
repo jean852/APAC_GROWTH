@@ -20,7 +20,8 @@
 
           <div class="dash-card main-banner">
             <div class="welcome-message">
-              <h2>Welcome back, Jeremy</h2>
+              <h2>Welcome back, <%= current_user.email %></h2>
+              <%# Create HTML component to generate a variety of welcome messages that propose the best CTA %>
               <p>We noticed that you have no project yet. Create a Proposal today so our Experts can help you meet with potentials client and partners in Asia.</p>
               <button type="button" class="btn btn-primary">Create my first RFP</button>
             </div>
