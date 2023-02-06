@@ -20,6 +20,15 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
 
+  # Configure Linkedin x Omniauth
+  config.omniauth :linkedin, Rails.application.credentials[:linkedin][:api_id], Rails.application.credentials[:linkedin][:api_key]
+  # config.omniauth :linkedin, ENV['LINKEDIN_CLIENT_ID'], ENV['LINKEDIN_CLIENT_KEY']
+
+
+
+
+
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

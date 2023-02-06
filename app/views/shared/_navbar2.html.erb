@@ -74,10 +74,10 @@
   </li>
   <li class="profile">
     <div class="profile-details">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU" alt="profileImg" id="profile-picture">
+      <img src="<%= current_user.picture_url %>" alt="profileImg" id="profile-picture">
       <div class="name_job">
-        <div class="name">Prem Shahi</div>
-        <div class="job">Web designer</div>
+        <div class="name"><%= current_user.first_name + " " + current_user.last_name.first.capitalize + "." %></div>
+        <div class="job">Transform Asia Limited</div>
       </div>
     <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
       <div><i class='bx bx-log-out' id="log_out" ></i></div>

@@ -48,6 +48,19 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+
+# Gems that I added specifically for the project
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem "omniauth-linkedin-oauth2"
+
+
+
+
+
+
+
+
+
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
