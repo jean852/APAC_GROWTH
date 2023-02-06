@@ -1,16 +1,12 @@
-class RefreshtokenJob < ApplicationJob
+class ComplookupJob < ApplicationJob
   queue_as :default
 
   def perform(domain, location, name)
-
-
     require "uri"
     require "net/http"
     require "json"
 
-
     # LOOKUP FOR LINKEDIN URL
-
     company_domain = 'openai.com'
     company_location = ''
     company_name = 'OpenAI'
@@ -35,7 +31,6 @@ class RefreshtokenJob < ApplicationJob
     p "---"
 
     # LOOKUP LINKEDIN PROFILE / IF WE RECEIVED SOMETHING
-
 
     unless data["url"].nil?
 

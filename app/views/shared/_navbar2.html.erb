@@ -77,7 +77,7 @@
       <img src="<%= current_user.picture_url %>" alt="profileImg" id="profile-picture">
       <div class="name_job">
         <div class="name"><%= current_user.first_name + " " + current_user.last_name.first.capitalize + "." %></div>
-        <div class="job">Transform Asia Limited</div>
+        <div class="job"><%= current_user.company.name %></div>
       </div>
     <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
       <div><i class='bx bx-log-out' id="log_out" ></i></div>

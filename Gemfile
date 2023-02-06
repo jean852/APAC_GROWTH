@@ -53,9 +53,7 @@ gem "sassc-rails"
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-linkedin-oauth2"
 
-
-
-
+gem 'countries'
 
 
 
