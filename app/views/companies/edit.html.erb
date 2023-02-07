@@ -22,6 +22,11 @@
       </div>
 
       <div class="form-group mt-3">
+        <%= form.label :tagline %>
+        <%= form.text_field :tagline, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
         <%= form.label :description %>
         <%= form.text_area :description, class: "form-control" %>
       </div>
@@ -41,10 +46,6 @@
         <%= form.text_field :specialities, class: "form-control" %>
       </div>
 
-      <div class="form-group mt-3">
-        <%= form.label :tagline %>
-        <%= form.text_field :tagline, class: "form-control" %>
-      </div>
 
       <%= form.submit "Update Company", class: "btn btn-primary mt-5" %>
     <% end %>

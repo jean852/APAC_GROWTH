@@ -22,8 +22,8 @@
             <div class="welcome-message">
               <h2>Welcome back, <%= current_user.first_name %></h2>
               <%# Create HTML component to generate a variety of welcome messages that propose the best CTA %>
-              <p>We noticed that you have no project yet. Create a Proposal today so our Experts can help you meet with potentials client and partners in Asia.</p>
-              <button type="button" class="btn btn-primary">Create my first RFP</button>
+              <p>We noticed that you have no project yet. Create a Proposal today so our Experts can help <%= current_user.company.name %> meet with potentials client and partners in Asia.</p>
+              <button type="button" class="btn btn-primary shadow">Create my first RFP</button>
             </div>
             <div class="welcome-picture">
               <%= image_tag("hongkong", size: "300", id: "dash-picture" ) %>
@@ -33,17 +33,51 @@
           <div class="components-box">
             <div class="left-components">
               <div class="dash-card top-left-component">
-                <%# RFP BOX %>
+                <%# RFP BOX / CSS GRID %>
+                <div class="cssgrid-small-parent">
+                  <div class="cssgrid-small-div1">
+                    <h6>Open proposals</h6>
+                  </div>
+                  <div class="cssgrid-small-div2">
+                    <p>see more</p>
+                  </div>
+                  <div class="cssgrid-small-div3">
+                    <%# CREATE RFP LIST HERE %>
+                  </div>
+                </div>
 
 
               </div>
               <div class="dash-card bottom-left-component">
-                <%# PROJECT BOX %>
+                <%# PROJECT BOX / CSS GRID%>
+                <div class="cssgrid-small-parent">
+                  <div class="cssgrid-small-div1">
+                    <h6>Active projects</h6>
+                  </div>
+                  <div class="cssgrid-small-div2">
+                    <p>see more</p>
+                  </div>
+                  <div class="cssgrid-small-div3">
+                    <%# CREATE PROJECT LIST HERE %>
+
+                  </div>
+                </div>
 
               </div>
             </div>
             <div class="dash-card right-component">
-                <%# BUSINESS CALENDAR %>
+              <%# BUSINESS CALENDAR / CSS GRID %>
+              <div class="cssgrid-small-parent">
+                <div class="cssgrid-small-div1">
+                  <h6>Business Calendar</h6>
+                </div>
+                <div class="cssgrid-small-div2">
+
+                </div>
+                <div class="cssgrid-small-div3">
+                  <%# CREATE CALENDAR OR LIST OF EVENT HERE %>
+
+              </div>
 
             </div>
           </div>
