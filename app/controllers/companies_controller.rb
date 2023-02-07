@@ -25,6 +25,22 @@ class CompaniesController < ApplicationController
     @company.save
     current_user.company_id = @company.id
     current_user.save
+
+    enriched_data = ComplookupJob.perform_now(@company.domain, @company.country, @company.name)
+
+    unless enriched_data.nil?
+      @company.description = enriched_data["description"]
+      @company.founded = enriched_data["founded_year"]
+      @company.company_size = enriched_data["company_size_on_linkedin"]
+      @company.country = enriched_data["hq"]["country"]
+      @company.specialities = enriched_data["specialities"]
+      @company.tagline = enriched_data["tagline"]
+      @company.profile_pic_url = enriched_data["profile_pic_url"]
+      @company.background_cover_image_url = enriched_data["background_cover_image_url"]
+      @company.save
+    end
+
+    redirect_to edit_company_path(@company)
     # authorize @company
   end
 
@@ -33,7 +49,12 @@ class CompaniesController < ApplicationController
   end
 
   def update
-
+    @company.update(company_params)
+    if @company.save
+      redirect_to client_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -45,7 +66,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :domain, :country)
+    params.require(:company).permit(:name, :domain, :country, :description, :founded, :company_size, :specialities, :tagline)
   end
 
 end

@@ -7,11 +7,11 @@ class ComplookupJob < ApplicationJob
     require "json"
 
     # LOOKUP FOR LINKEDIN URL
-    company_domain = 'openai.com'
-    company_location = ''
-    company_name = 'OpenAI'
+    # company_domain = 'openai.com'
+    # company_location = ''
+    # company_name = 'OpenAI'
 
-    url = URI("https://nubela.co/proxycurl/api/linkedin/company/resolve?company_location=#{company_location}&company_domain=#{company_domain}&company_name=#{company_name}")
+    url = URI("https://nubela.co/proxycurl/api/linkedin/company/resolve?company_location=#{location}&company_domain=#{domain}&company_name=#{name}")
 
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true

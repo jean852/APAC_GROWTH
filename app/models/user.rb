@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  belongs_to :company
+  belongs_to :company, optional: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.linkedin_data"]  && session["devise.linkedin_data"]["info"]
+      if data = session["devise.linkedin_data"] && session["devise.linkedin_data"]["info"]
         user.email = data["email"] if user.email.blank?
       end
     end
