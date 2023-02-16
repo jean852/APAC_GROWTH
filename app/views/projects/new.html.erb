@@ -1,46 +1,89 @@
-<!--
+<div class="row justify-content-center vh-100" id="backdrop">
 
-  Radio version of tabs.
+  <div class="project-form-container">
 
-  Requirements:
-  - not rely on specific IDs for CSS (the CSS shouldn't need to know specific IDs)
-  - flexible for any number of unkown tabs [2-6]
-  - accessible
+    <%# TITLE FOR THE FORM WITH ESCAPE BUTTON / REMAIN STATIC DURING FORM %>
+    <div class="d-flex flex-row align-items-center justify-content-between p-3 mt-3 mb-5 border-bottom">
+      <div>
+        <h2>Launch a new project (RFP)</h2>
+      </div>
+      <div>
+        <%# To replace with cool icon %>
+        <%= link_to root_path do%>
+          <i class="fa-regular fa-circle-xmark" style="font-size:24px; color: grey"></i>
+        <% end %>
+      </div>
+    </div>
 
-  Caveats:
-  - since these are checkboxes the tabs not tab-able, need to use arrow keys
+    <%# BELOW IS 6 SECTION TO NAVIGATE AND DISPLAY THE CORRECT FORM PARTIAL %>
+    <div data-controller='projectformflow' >
 
-  Also worth reading:
-  http://simplyaccessible.com/article/danger-aria-tabs/
--->
+      <%# 1) MAIN CHOICE OF SERVICE %>
+      <div data-projectformflow-target="step0" class="d-flex flex-column justify-content-between align-items-left">
+        <h4>What type of expansion service are you looking for?</h4>
+        <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
 
-<div class="tabset">
-  <!-- Tab 1 -->
-  <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-  <label for="tab1">STUDY: Discover the Market</label>
-  <!-- Tab 2 -->
-  <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-  <label for="tab2">B2B MISSION: Meet qualified targets</label>
-  <!-- Tab 3 -->
-  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-  <label for="tab3">LEAD GEN: Automatize your expansion</label>
 
-  <div class="tab-panels">
-    <section id="marzen" class="tab-panel">
-      <h2>6A. Märzen</h2>
-      <p><strong>Overall Impression:</strong> An elegant, malty German amber lager with a clean, rich, toasty and bready malt flavor, restrained bitterness, and a dry finish that encourages another drink. The overall malt impression is soft, elegant, and complex, with a rich aftertaste that is never cloying or heavy.</p>
-      <p><strong>History:</strong> As the name suggests, brewed as a stronger “March beer” in March and lagered in cold caves over the summer. Modern versions trace back to the lager developed by Spaten in 1841, contemporaneous to the development of Vienna lager. However, the Märzen name is much older than 1841; the early ones were dark brown, and in Austria the name implied a strength band (14 °P) rather than a style. The German amber lager version (in the Viennese style of the time) was first served at Oktoberfest in 1872, a tradition that lasted until 1990 when the golden Festbier was adopted as the standard festival beer.</p>
-  </section>
-    <section id="rauchbier" class="tab-panel">
-      <h2>6B. Rauchbier</h2>
-      <p><strong>Overall Impression:</strong>  An elegant, malty German amber lager with a balanced, complementary beechwood smoke character. Toasty-rich malt in aroma and flavor, restrained bitterness, low to high smoke flavor, clean fermentation profile, and an attenuated finish are characteristic.</p>
-      <p><strong>History:</strong> A historical specialty of the city of Bamberg, in the Franconian region of Bavaria in Germany. Beechwood-smoked malt is used to make a Märzen-style amber lager. The smoke character of the malt varies by maltster; some breweries produce their own smoked malt (rauchmalz).</p>
-    </section>
-    <section id="dunkles" class="tab-panel">
-      <h2>6C. Dunkles Bock</h2>
-      <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-      <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and advertisements.</p>
-    </section>
+        <div class="dash-card mega-form-card w-100" data-projectformflow-target="option1" data-action="click->projectformflow#select1">
+          <div class="d-flex flex-row">
+            <div><%= image_tag("studies", size: "100", class: "m-2" ) %></div>
+            <div class="p-2">
+              <h6>Market entry studies</h6>
+              <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="dash-card mega-form-card w-100" data-projectformflow-target="option2" data-action="click->projectformflow#select2">
+          <div class="d-flex flex-row">
+            <div><%= image_tag("b2bintros", size: "100", class: "m-2" ) %></div>
+            <div class="p-2">
+              <h6>B2B Introductions</h6>
+              <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card mega-form-card w-100" data-projectformflow-target="option3" data-action="click->projectformflow#select3">
+          <div class="d-flex flex-row">
+            <div><%= image_tag("leadgeneration", size: "100", class: "m-2" ) %></div>
+            <div class="p-2">
+              <h6>Lead Generation</h6>
+              <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-projectformflow-target="continue1" data-action="click->projectformflow#to_level2", class="d-none btn btn-primary my-3 w-25"  style="width:100%">Continue</div>
+
+      </div>
+
+      <%# 1) STUDY %>
+      <div data-projectformflow-target="step1" class="d-none d-flex flex-column justify-content-between align-items-center">
+        <h6>Study Form here</h6>
+      </div>
+
+      <%# 2) B2B INTRODUCTION CHOICE %>
+      <div data-projectformflow-target="step2" class="d-none d-flex flex-column justify-content-center align-items-center">
+        <h6>B2B Intro Selector Here</h6>
+      </div>
+
+      <%# 2A) B2B INTRODUCTION SINGLE %>
+      <div data-projectformflow-target="step2-a" class="d-none d-flex flex-column justify-content-center align-items-center">
+        <h6>B2B Single Form here</h6>
+      </div>
+
+      <%# 2B) B2B INTRODUCTION MULTI %>
+      <div data-projectformflow-target="step2-b" class="d-none d-flex flex-column justify-content-around align-items-center text-center">
+        <h6>B2B Multi Form here</h6>
+      </div>
+
+      <%# 3) LEAD GENERATION %>
+      <div data-projectformflow-target="step3" class="d-none d-flex flex-column justify-content-around align-items-center text-center">
+        <h6>Lead Generation Form here</h6>
+      </div>
+
+    </div>
   </div>
-
 </div>

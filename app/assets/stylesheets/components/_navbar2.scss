@@ -32,6 +32,7 @@
 }
 .logo_name {
   white-space: nowrap;
+  align-items: center;
 }
 .sidebar .logo-details .logo_name{
   color: #fff;
@@ -267,4 +268,8 @@
   #desktop-nav {
     display: none;
   }
+}
+
+#logo {
+ height: auto;
 }

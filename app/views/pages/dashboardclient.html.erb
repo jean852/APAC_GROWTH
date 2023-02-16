@@ -23,7 +23,9 @@
               <h2>Welcome back, <%= current_user.first_name %></h2>
               <%# Create HTML component to generate a variety of welcome messages that propose the best CTA %>
               <p>We noticed that you have no project yet. Create a Proposal today so our Experts can help <%= current_user.company.name %> meet with potentials client and partners in Asia.</p>
-              <button type="button" class="btn btn-primary shadow">Create my first RFP</button>
+              <%= link_to  new_project_path do %>
+                <button type="button" class="btn btn-primary shadow">Create my first Project</button>
+              <% end %>
             </div>
             <div class="welcome-picture">
               <%= image_tag("hongkong", size: "300", id: "dash-picture" ) %>
@@ -76,7 +78,9 @@
                 </div>
                 <div class="cssgrid-small-div3">
                   <%# CREATE CALENDAR OR LIST OF EVENT HERE %>
-
+                  <%= react_component("Form") %>
+                  <%= react_component("MaterialButton") %>
+                </div>
               </div>
 
             </div>
