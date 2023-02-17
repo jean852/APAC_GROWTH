@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ "step0", "step1", "step2", "step2a", "step2b", "step3", "option1", "option2", "option3", "option2a", "option2b", "selection1", "selection2", "continue1" ]
+    static targets = [ "step0", "step1", "step2", "stepa2", "stepb2", "step3", "option1", "option2", "option3", "optiona2", "optionb2", "selection1", "selection2", "continue1", "continue2" ]
   connect() {
     console.log("Project Form Flow Launched");
   }
@@ -31,11 +31,20 @@ export default class extends Controller {
   to_level3() {
     console.log("Sending to level 3")
     // HIDE LEVEL 2
+    this.step2Target.classList.add("d-none")
 
     // CHECKED LEVEL 2 STORED VALUE
-
-
     // SHOW THE RIGHT ECTION 2A or 2B
+
+    if ( this.step2Target.value == "OPTIONA2" ) {
+      this.stepa2Target.classList.remove("d-none")
+      console.log("Level 3 with option 2A")
+    }
+
+    if ( this.step2Target.value == "OPTIONB2" ) {
+      this.stepb2Target.classList.remove("d-none")
+      console.log("Level 3 with option 2B")
+    }
 
   }
 
@@ -73,7 +82,27 @@ export default class extends Controller {
   }
 
   // LEVEL 2 SELECTION
+  selecta2() {
+    console.log("Option 2a selected")
+    this.step2Target.value="OPTIONA2"
+    console.log( this.stepa2Target.value )
 
+    this.optionb2Target.classList.remove("toggled-card")
+    this.optiona2Target.classList.add("toggled-card")
+
+    this.continue2Target.classList.remove("d-none")
+  }
+
+  selectb2() {
+    console.log("Option 2a selected")
+    this.step2Target.value="OPTIONB2"
+    console.log( this.stepb2Target.value )
+
+    this.optionb2Target.classList.add("toggled-card")
+    this.optiona2Target.classList.remove("toggled-card")
+
+    this.continue2Target.classList.remove("d-none")
+  }
 
 
 

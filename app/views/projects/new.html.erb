@@ -61,21 +61,55 @@
 
       <%# 1) STUDY %>
       <div data-projectformflow-target="step1" class="d-none d-flex flex-column justify-content-between align-items-center">
-        <h6>Study Form here</h6>
+        <h4>The best way to connect with qualified leads fast</h4>
+        <p>Do the math! How long will it take for your business development team to get in touch with the right person, at the right level, and from the other side of the world? Probably much more than for person who already have the right contact. So dont waste time and money for your developemnt in APAC</p>
+
       </div>
 
       <%# 2) B2B INTRODUCTION CHOICE %>
       <div data-projectformflow-target="step2" class="d-none d-flex flex-column justify-content-center align-items-center">
-        <h6>B2B Intro Selector Here</h6>
+        <h4>B2B Introductions: The best way to connect with qualified leads fast</h4>
+        <p>Do the math! How long will it take for your business development team to get in touch with the right person, at the right level, and from the other side of the world? Probably much more than for person who already have the right contact. So dont waste time and money for your developemnt in APAC</p>
+
+        <div>
+
+          <div class="dash-card mega-form-card w-100" data-projectformflow-target="optiona2" data-action="click->projectformflow#selecta2">
+          <div class="d-flex flex-row">
+            <div><%= image_tag("b2bintros", size: "100", class: "m-2" ) %></div>
+            <div class="p-2">
+              <h6>SINGLE</h6>
+              <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="dash-card mega-form-card w-100" data-projectformflow-target="optionb2" data-action="click->projectformflow#selectb2">
+          <div class="d-flex flex-row">
+            <div><%= image_tag("b2bintros", size: "100", class: "m-2" ) %></div>
+            <div class="p-2">
+              <h6>MULTI</h6>
+              <p>It seems like you do not have any ongoing project yet. Create a RFP now, so you can receive business offers from our Experts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-projectformflow-target="continue2" data-action="click->projectformflow#to_level3", class="d-none btn btn-primary my-3 w-25"  style="width:100%">Continue</div>
+
+
+        </div>
       </div>
 
       <%# 2A) B2B INTRODUCTION SINGLE %>
-      <div data-projectformflow-target="step2-a" class="d-none d-flex flex-column justify-content-center align-items-center">
+      <div data-projectformflow-target="stepa2" class="d-none d-flex flex-column justify-content-center align-items-center">
         <h6>B2B Single Form here</h6>
+
+
+
       </div>
 
       <%# 2B) B2B INTRODUCTION MULTI %>
-      <div data-projectformflow-target="step2-b" class="d-none d-flex flex-column justify-content-around align-items-center text-center">
+      <div data-projectformflow-target="stepb2" class="d-none d-flex flex-column justify-content-around align-items-center text-center">
         <h6>B2B Multi Form here</h6>
       </div>
 
