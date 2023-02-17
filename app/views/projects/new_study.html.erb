@@ -1,0 +1,92 @@
+    <link rel="stylesheet" href="/assets/slimselect.min.css">
+    <script src="/assets/slimselect.min.js"></script>
+
+
+<div class="row justify-content-center" id="backdrop">
+
+  <div class="project-form-container ">
+
+    <%# TITLE FOR THE FORM WITH ESCAPE BUTTON / REMAIN STATIC DURING FORM %>
+    <div class="d-flex flex-row align-items-center justify-content-between p-3 mt-3 mb-5 border-bottom">
+      <div>
+        <h2>Launch a new project (RFP)</h2>
+      </div>
+      <div>
+        <%# To replace with cool icon %>
+        <%= link_to root_path do%>
+          <i class="fa-regular fa-circle-xmark" style="font-size:24px; color: grey"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dash-card">
+
+      <form action="<%= url_for(controller: 'projects', action: 'create') %>" method="post">
+
+        <%# ----------STEP1--------------- %>
+        <div class="form-group">
+          <label for="project_project_name">Project name</label>
+          <input type="text" name="project[project_name]" id="project_project_name" class="form-control">
+        </div>
+
+        <div class="form-group" style="display:flex; flex-wrap:wrap;">
+          <div style="flex:1; margin-right:10px;">
+            <label for="project_project_start">Proposed starting date</label>
+            <input type="date" name="project[project_start]" id="project_project_start" class="form-control">
+          </div>
+          <div style="flex:1; margin-left:10px;">
+            <label for="project_project_end">Expected delivery date</label>
+            <input type="date" name="project[project_end]" id="project_project_end" class="form-control">
+          </div>
+        </div>
+        <%# ----------STEP2--------------- %>
+
+
+
+
+
+        <%# ----------STEP3--------------- %>
+
+        <div class="form-group">
+          <label for="project_project_budget">Project budget</label>
+          <input type="text" name="project[project_budget]" id="project_project_budget" class="form-control">
+        </div>
+
+
+
+        <%# HIDDEN VALUES HERE %>
+        <div class="form-group" style="display:none">
+          <label for="project_project_type">Project type</label>
+          <input type="text" name="project[project_type]" id="project_project_type" class="form-control" value="study">
+        </div>
+
+        <div class="form-group" style="display:none">
+          <label for="project_rfp_status">RFP status</label>
+          <input type="text" name="project[rfp_status]" id="project_rfp_status" class="form-control" value="pending">
+        </div>
+
+        <div class="form-group" style="display:none">
+          <label for="project_project_status">Project status</label>
+          <input type="text" name="project[project_status]" id="project_project_status" class="form-control" value="pending">
+        </div>
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+        <%# SUBMIT BUTTON %>
+        <button type="submit" class="btn btn-primary">Create Project</button>
+        <%# ----------FORM CLOSED--------------- %>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var select = new SlimSelect({
+    select: '#project_countries',
+    placeholder: 'Select countries',
+    allowDeselect: true,
+  });
+</script>

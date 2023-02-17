@@ -149,3 +149,17 @@
 
 
 // MEDIA QUERIES
+
+@media (max-width: 1006px) {
+  #dash-picture {
+    display: none;
+  }
+
+  .welcome-message {
+    min-width: 100%;
+  }
+
+  .welcome-picture {
+    display: none;
+  }
+}

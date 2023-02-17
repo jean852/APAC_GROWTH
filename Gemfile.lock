@@ -240,6 +240,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selectize-rails (0.12.6)
     selenium-webdriver (4.8.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -303,6 +304,7 @@ DEPENDENCIES
   react-rails
   redis (~> 4.0)
   sassc-rails
+  selectize-rails
   selenium-webdriver
   simple_form!
   sprockets-rails
