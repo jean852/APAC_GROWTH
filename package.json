@@ -9,6 +9,7 @@
     "bootstrap": "^5.2.3",
     "node-sass": "^8.0.0",
     "slim-select": "^2.4.2",
+    "tom-select": "^2.2.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },

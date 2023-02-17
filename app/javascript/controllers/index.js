@@ -7,5 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import ProjectformflowController from "./projectformflow_controller.js"
+import ProjectformflowController from "./projectformflow_controller"
 application.register("projectformflow", ProjectformflowController)
+
+
+import TomSelectController from "./tom_select_controller"
+application.register('tom-select', TomSelectController)

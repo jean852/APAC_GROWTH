@@ -67,8 +67,27 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  # def project_params
+  #   params.require(:project).permit(:project_name, :project_type, :project_start, :project_end, :project_budget, countries: [])
+  # end
+
   def project_params
-    params.require(:project).permit(:project_name, :project_type, :project_start, :project_end, :project_budget, countries: [])
+    params.require(:project).permit(
+      :project_name,
+      :client_id,
+      :company_id,
+      :expert_id,
+      :project_status,
+      :project_type,
+      :bidding_start,
+      :bidding_end,
+      :rfp_status,
+      :project_start,
+      :project_end,
+      :project_budget,
+      :project_price,
+      countries: []
+    )
   end
 
 end

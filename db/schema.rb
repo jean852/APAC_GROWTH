@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_081259) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_145535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,9 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_081259) do
 
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
-    t.bigint "client_id_id"
-    t.bigint "company_id_id"
-    t.bigint "expert_id_id"
+    t.bigint "client_id"
+    t.bigint "company_id"
+    t.bigint "expert_id"
     t.string "project_status"
     t.string "project_type"
     t.date "bidding_start"
@@ -46,9 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_081259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "countries", default: [], array: true
-    t.index ["client_id_id"], name: "index_projects_on_client_id_id"
-    t.index ["company_id_id"], name: "index_projects_on_company_id_id"
-    t.index ["expert_id_id"], name: "index_projects_on_expert_id_id"
+    t.index ["client_id"], name: "index_projects_on_client_id"
+    t.index ["company_id"], name: "index_projects_on_company_id"
+    t.index ["expert_id"], name: "index_projects_on_expert_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,8 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_081259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "projects", "companies", column: "company_id_id"
-  add_foreign_key "projects", "users", column: "client_id_id"
-  add_foreign_key "projects", "users", column: "expert_id_id"
+  add_foreign_key "projects", "companies"
+  add_foreign_key "projects", "users", column: "client_id"
+  add_foreign_key "projects", "users", column: "expert_id"
   add_foreign_key "users", "companies"
 end
