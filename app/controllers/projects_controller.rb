@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.client_id_id = current_user.id
+    @project.client_id = current_user.id
 
     if @project.save
       redirect_to @project, notice: "Project was successfully created."
@@ -67,10 +67,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  # def project_params
-  #   params.require(:project).permit(:project_name, :project_type, :project_start, :project_end, :project_budget, countries: [])
-  # end
-
   def project_params
     params.require(:project).permit(
       :project_name,
@@ -86,8 +82,30 @@ class ProjectsController < ApplicationController
       :project_end,
       :project_budget,
       :project_price,
-      countries: []
+      :project_duration,
+      :project_objective,
+      :intros_quantity,
+      :target_type,
+      :target_company,
+      :target_url,
+      :target_country,
+      :target_name,
+      :target_ideal,
+      :project_expert_fee,
+      :project_platform_fee,
+      :project_payment_fee,
+      :parameter_incognito,
+      :parameter_terms,
+      intros_type: [],
+      target_industries: [],
+      target_regions: [],
+      target_size: [],
+      target_seniority: [],
+      target_jobtitle: [],
+      study_elements: [],
+      study_deliverables: []
     )
   end
+
 
 end

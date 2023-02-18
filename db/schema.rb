@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_145535) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_031845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_145535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "countries", default: [], array: true
+    t.integer "project_duration"
+    t.string "project_objective"
+    t.integer "intros_quantity"
+    t.text "intros_type", default: [], array: true
+    t.text "target_industries", default: [], array: true
+    t.text "target_regions", default: [], array: true
+    t.string "target_type"
+    t.text "target_size", default: [], array: true
+    t.string "target_company"
+    t.string "target_url"
+    t.string "target_country"
+    t.string "target_name"
+    t.text "target_ideal"
+    t.text "target_seniority", default: [], array: true
+    t.text "target_jobtitle", default: [], array: true
+    t.text "study_elements", default: [], array: true
+    t.text "study_deliverables", default: [], array: true
+    t.integer "project_expert_fee"
+    t.integer "project_platform_fee"
+    t.integer "project_payment_fee"
+    t.boolean "parameter_incognito"
+    t.boolean "parameter_terms"
     t.index ["client_id"], name: "index_projects_on_client_id"
     t.index ["company_id"], name: "index_projects_on_company_id"
     t.index ["expert_id"], name: "index_projects_on_expert_id"

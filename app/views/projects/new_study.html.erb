@@ -19,16 +19,34 @@
 
       <%= simple_form_for @project, data: { countries: 'form' } do |f| %>
 
-        <%= f.input :project_status %>
-        <%= f.input :project_type %>
-        <%= f.input :bidding_start %>
-        <%= f.input :bidding_end %>
-        <%= f.input :rfp_status %>
+        <%# STEP 0 HIDDEN PARAMETERS %>
+        <%= f.input :project_status, as: :hidden, input_html: { value: 'pending' } %>
+        <%= f.input :project_type, as: :hidden, input_html: { value: 'study' }  %>
+        <%= f.input :rfp_status, as: :hidden, input_html: { value: 'pending_admin_validation' } %>
+
+        <%# STEP 1 GENERAL INFOS %>
+        <%= f.input :project_name %>
+        <%= f.input :project_objective %>
         <%= f.input :project_start %>
-        <%= f.input :project_end %>
+
+
+        <%# STEP 2 TARGETING %>
+
+        <%= f.input :target_regions, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add regions', closeAfterSelect: false } } } %>
+
+        <%= f.input :target_industries , collection: Project::INDUSTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select" } } %>
+
+        <%= f.input :study_elements , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+        <%= f.input :study_deliverables , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+
+
+
+        <%# STEP 3 PROJECT PARAMETERS %>
         <%= f.input :project_budget %>
-        <%= f.input :project_price %>
-        <%= f.input :countries, collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+        <%= f.input :parameter_incognito, as: :boolean %>
+        <%= f.input :parameter_terms, as: :boolean %>
+
+
         <%= f.button :submit %>
       <% end %>
 
