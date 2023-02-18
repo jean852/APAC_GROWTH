@@ -32,6 +32,7 @@
 }
 .logo_name {
   white-space: nowrap;
+  align-items: center;
 }
 .sidebar .logo-details .logo_name{
   color: #fff;
@@ -150,8 +151,9 @@
   background: #11101D;
 }
 .sidebar li a:hover{
-  background: #FFF;
+  background: rgb(255, 255, 255);
 }
+
 .sidebar li a .links_name{
   color: #fff;
   font-size: 15px;
@@ -196,8 +198,8 @@
   flex-wrap: nowrap;
 }
 .sidebar li img{
-  height: 45px;
-  width: 45px;
+  height: 45px ;
+  min-width: 45px ;
   object-fit: cover;
   border-radius: 6px;
   margin-right: 10px;
@@ -228,6 +230,11 @@
   width: 50px;
   background: none;
 }
+
+.sidebar.open .profile #log_out:hover{
+  background: #FFF;
+}
+
 .home-section{
   position: relative;
   background: #E4E9F7;
@@ -254,4 +261,15 @@
   .sidebar li .tooltip{
     display: none;
   }
+}
+
+
+@media screen and (max-width: 992px) {
+  #desktop-nav {
+    display: none;
+  }
+}
+
+#logo {
+ height: auto;
 }

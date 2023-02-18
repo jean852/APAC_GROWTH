@@ -1,0 +1,57 @@
+<div class="row justify-content-center" id="backdrop">
+
+  <div class="project-form-container ">
+
+    <%# TITLE FOR THE FORM WITH ESCAPE BUTTON / REMAIN STATIC DURING FORM %>
+    <div class="d-flex flex-row align-items-center justify-content-between p-3 mt-3 mb-5 border-bottom">
+      <div>
+        <h2>Launch a new project (RFP)</h2>
+      </div>
+      <div>
+        <%# To replace with cool icon %>
+        <%= link_to root_path do%>
+          <i class="fa-regular fa-circle-xmark" style="font-size:24px; color: grey"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dash-card">
+
+      <%= simple_form_for @project, data: { countries: 'form' } do |f| %>
+
+        <%# STEP 0 HIDDEN PARAMETERS %>
+        <%= f.input :project_status, as: :hidden, input_html: { value: 'pending' } %>
+        <%= f.input :project_type, as: :hidden, input_html: { value: 'study' }  %>
+        <%= f.input :rfp_status, as: :hidden, input_html: { value: 'pending_admin_validation' } %>
+
+        <%# STEP 1 GENERAL INFOS %>
+        <%= f.input :project_name %>
+        <%= f.input :project_objective %>
+        <%= f.input :project_start %>
+
+
+        <%# STEP 2 TARGETING %>
+
+        <%= f.input :target_regions, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add regions', closeAfterSelect: false } } } %>
+
+        <%= f.input :target_industries , collection: Project::INDUSTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select" } } %>
+
+        <%= f.input :study_elements , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+        <%= f.input :study_deliverables , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+
+
+
+        <%# STEP 3 PROJECT PARAMETERS %>
+        <%= f.input :project_budget %>
+        <%= f.input :parameter_incognito, as: :boolean %>
+        <%= f.input :parameter_terms, as: :boolean %>
+
+
+        <%= f.button :submit %>
+      <% end %>
+
+
+    </div>
+
+  </div>
+</div>

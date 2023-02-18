@@ -1,0 +1,23 @@
+.project-form-container {
+  max-width: 800px;
+  padding: 10px;
+}
+
+.toggled-card {
+  border: solid #0D6EFD 2px
+}
+
+.mega-form-card {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  cursor: pointer;
+
+  h6, p {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center align-items-center vh-100" id="backdrop">
+
+  <div class="dash-card form-card mt-5">
+
+    <h2>Edit Your Company</h2>
+    <p>You can add/remove some information about your company before saving it.</p>
+
+    <%= form_with model: @company, local: true, url: company_path(@company), method: :patch do |form| %>
+      <div class="form-group mt-3">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :domain %>
+        <%= form.text_field :domain, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :country %>
+        <%= form.text_field :country, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :tagline %>
+        <%= form.text_field :tagline, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :founded %>
+        <%= form.text_field :founded, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :company_size %>
+        <%= form.text_field :company_size, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.label :specialities %>
+        <%= form.text_field :specialities, class: "form-control" %>
+      </div>
+
+
+      <%= form.submit "Update Company", class: "btn btn-primary mt-5" %>
+    <% end %>
+  </div>
+
+</div>

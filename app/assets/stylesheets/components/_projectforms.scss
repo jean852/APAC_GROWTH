@@ -1,0 +1,44 @@
+/* Style the select input */
+select.selectized {
+  background-color: rgb(244, 0, 0);
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #495057;
+  width: 100%;
+}
+
+/* Style the dropdown menu */
+.selectize-dropdown {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selectize-dropdown .option {
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #495057;
+}
+
+.selectize-dropdown .option:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+
+.ts-control {
+  background-color: transparent;
+  border: none;
+
+  .item {
+    background-color: #0D6EFD !important;
+    color: white !important;
+    padding: 6px 15px !important;
+    border-radius: 10px !important;
+
+  }
+}

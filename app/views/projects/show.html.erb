@@ -1,0 +1,116 @@
+<!-- app/views/projects/show.html.erb -->
+<%# PROJECT SHOW PAGE %>
+
+<%# Info on this page need to be grouped by type of info + need to create blocks for each type of mission so it make sense %>
+
+
+<div class="container">
+  <h1><%= "Project Name: #{@project.project_name}" %></h1>
+
+  <dl>
+    <dt>Client:</dt>
+    <dd><%= @project.client_id || "N/A" %></dd>
+
+    <dt>Company:</dt>
+    <dd><%= @project.company_id || "N/A" %></dd>
+
+    <dt>Expert:</dt>
+    <dd><%= @project.expert_id || "N/A" %></dd>
+
+    <dt>Status:</dt>
+    <dd><%= @project.project_status || "N/A" %></dd>
+
+    <dt>Type:</dt>
+    <dd><%= @project.project_type || "N/A" %></dd>
+
+    <dt>Bidding period:</dt>
+    <dd><%= @project.bidding_start || "N/A" %> - <%= @project.bidding_end || "N/A" %></dd>
+
+    <dt>RFP status:</dt>
+    <dd><%= @project.rfp_status || "N/A" %></dd>
+
+    <dt>Project period:</dt>
+    <dd><%= @project.project_start || "N/A" %> - <%= @project.project_end || "N/A" %></dd>
+
+    <dt>Budget:</dt>
+    <dd><%= number_to_currency(@project.project_budget || 0, precision: 0) %></dd>
+
+    <dt>Price:</dt>
+    <dd><%= number_to_currency(@project.project_price || 0, precision: 0) %></dd>
+
+    <dt>Countries:</dt>
+    <dd><%= @project.countries&.join(", ") || "N/A" %></dd>
+
+    <dd><%= @project.countries&.class || "N/A" %></dd>
+
+    <dt>Project duration:</dt>
+    <dd><%= @project.project_duration || "N/A" %></dd>
+
+    <dt>Project objective:</dt>
+    <dd><%= @project.project_objective || "N/A" %></dd>
+
+    <dt>Intros quantity:</dt>
+    <dd><%= @project.intros_quantity || "N/A" %></dd>
+
+    <dt>Intros type:</dt>
+    <dd><%= @project.intros_type&.join(", ") || "N/A" %></dd>
+
+    <dt>Target industries:</dt>
+    <dd><%= @project.target_industries&.join(", ") || "N/A" %></dd>
+
+    <dt>Target regions:</dt>
+    <dd><%= @project.target_regions&.join(", ") || "N/A" %></dd>
+
+    <dt>Target type:</dt>
+    <dd><%= @project.target_type || "N/A" %></dd>
+
+    <dt>Target size:</dt>
+    <dd><%= @project.target_size&.join(", ") || "N/A" %></dd>
+
+    <dt>Target company:</dt>
+    <dd><%= @project.target_company || "N/A" %></dd>
+
+    <dt>Target URL:</dt>
+    <dd><%= @project.target_url || "N/A" %></dd>
+
+    <dt>Target country:</dt>
+    <dd><%= @project.target_country || "N/A" %></dd>
+
+    <dt>Target name:</dt>
+    <dd><%= @project.target_name || "N/A" %></dd>
+
+    <dt>Target ideal:</dt>
+    <dd><%= @project.target_ideal || "N/A" %></dd>
+
+    <dt>Target seniority:</dt>
+    <dd><%= @project.target_seniority&.join(", ") || "N/A" %></dd>
+
+    <dt>Target job title:</dt>
+    <dd><%= @project.target_jobtitle&.join(", ") || "N/A" %></dd>
+
+    <dt>Study elements:</dt>
+    <dd><%= @project.study_elements&.join(", ") || "N/A" %></dd>
+
+    <dt>Study deliverables:</dt>
+    <dd><%= @project.study_deliverables&.join(", ") || "N/A" %></dd>
+
+    <dt>Expert fee:</dt>
+    <dd><%= number_to_currency(@project.project_expert_fee || 0, precision: 0) %></dd>
+
+    <dt>Platform fee:</dt>
+    <dd><%= number_to_currency(@project.project_platform_fee || 0, precision: 0) %></dd>
+
+    <dt>Payment fee:</dt>
+    <dd><%= number_to_currency(@project.project_payment_fee || 0, precision: 0) %></dd>
+
+    <dt>Incognito parameter:</dt>
+    <dd><%= @project.parameter_incognito? ? "Yes" : "No" %></dd>
+
+    <dt>Terms parameter:</dt>
+    <dd><%= @project.parameter_terms? ? "Accepted" : "Not accepted" %></dd>
+  </dl>
+
+  <%= link_to "Edit", edit_project_path(@project) %>
+  <%= link_to "Back", projects_path %>
+
+</div>
