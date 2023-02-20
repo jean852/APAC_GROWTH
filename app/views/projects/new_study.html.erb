@@ -17,7 +17,7 @@
     <div class="dash-card">
 
       <%# FORM START %>
-      <%= simple_form_for @project, html: { id: 'prevent-enter-submit' } do |f| %>
+      <%= simple_form_for @project, html: { id: 'prevent-enter-submit' }, data: { controller: 'flatpickr' } do |f| %>
 
         <%# STEP 0 HIDDEN PARAMETERS %>
         <%= f.input :project_status, as: :hidden, input_html: { value: 'pending' } %>
@@ -59,8 +59,11 @@
           <h6>Now tell us a bit more about what you expect from this study and why</h6>
           <%= f.input :project_objective, required: true, label: false, as: :text, input_html: { rows: 5 }, placeholder: 'Please give us some insights about your goal, objectives and the reasons why you want to know more about the APAC market.' %>
 
-          <h6>Ideally, when do you want to start?</h6>
-          <%= f.input :project_start, required: true, label: false %>
+          <h6>Ideally, when do you want to start and end this project?</h6>
+          <div class="w-50">
+            <%= f.input :project_start, required: true, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+            <%= f.input :project_end, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
+          </div>
 
           <div class="d-flex flex-row-reverse mt-5">
             <a href="#" class="btn btn-primary btn-next width-50 ml-auto" data-action="stepper#nextStep">Next</a>
@@ -72,8 +75,11 @@
 
           <%# STEP 2 TARGETING %>
           <h6>Which countries should be covered in the study?</h6>
-          <%= f.input :target_regions, required: true, label: false, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add regions', closeAfterSelect: false } } } %>
+          <%= f.input :target_regions, required: true, label: false, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add countries', closeAfterSelect: false } } } %>
           <br>
+
+
+
           <h6>Which industries are we covering here?</h6>
           <%= f.input :target_industries, label: false, collection: Project::SUBINDUSTRIES, input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: {
             options: Project::SUBINDUSTRIES,
@@ -84,13 +90,30 @@
             plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }
           } } } %>
           <br>
+
+
           <h6>What should the study includes?</h6>
           <p>Select the elements that you want the expert to cover. You can add custom elements too.</p>
-          <%= f.input :study_elements , label: false, collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+          <%= f.input :study_elements, label: false, collection: Project::STUDYELEMENTS, input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: {
+            options: Project::STUDYELEMENTS,
+            labelField: 'service',
+            valueField: 'name',
+            plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }
+          } } } %>
+
+
+
           <br>
           <h6>What format of deliverablle do you want to be included?</h6>
           <p>Select the elements that you want the expert to cover. You can add custom elements too.</p>
-          <%= f.input :study_deliverables , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+          <%= f.input :study_deliverables, label: false, collection: Project::DELIVERABLES, input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: {
+            options: Project::DELIVERABLES,
+            labelField: 'deliverable',
+            valueField: 'name',
+            plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }
+          } } } %>
+
+
 
           <div class="btns-group  mt-5">
             <a href="#" class="btn btn-prev btn-primary width-25" data-action="stepper#prevStep">Previous</a>
@@ -108,7 +131,9 @@
           <br>
           <h6>What is your budget?</h6>
           <p>Experts wont see this information. But it will help us prioritizing their proposals and improve our services</p>
-          <%= f.input :project_budget, label: false %>
+          <%= f.input :project_budget, as: :numeric, label: false %>
+
+
 
           <br>
           <%= f.input :parameter_incognito, as: :boolean, label: "I prefer to post this mission anonymously. Only the selected expert will know my company details." %>
@@ -116,7 +141,7 @@
           <%= f.input :parameter_terms, as: :boolean, label: "I agree to the terms and conditions of the platform.", required: true, input_html: { required: true } %>
 
           <div class="btns-group  mt-5">
-            <a href="" class="btn btn-primary btn-prev" data-action="stepper#prevStep">Review</a>
+            <a href="#" class="btn btn-primary btn-prev" data-action="stepper#prevStep">Review</a>
             <%= f.button :submit, class: "btn btn-primary" %>
           </div>
         </div>
@@ -148,4 +173,9 @@
       }
     });
   });
+</script>
+
+
+<script>
+
 </script>
