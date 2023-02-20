@@ -1,14 +1,13 @@
-<div class="row justify-content-center" id="backdrop">
+<div class="row justify-content-center vh-100" id="backdrop">
 
   <div class="project-form-container ">
 
     <%# TITLE FOR THE FORM WITH ESCAPE BUTTON / REMAIN STATIC DURING FORM %>
     <div class="d-flex flex-row align-items-center justify-content-between p-3 mt-3 mb-5 border-bottom">
       <div>
-        <h2>Launch a new project (RFP)</h2>
+        <h2>Begin your expansion journey</h2>
       </div>
       <div>
-        <%# To replace with cool icon %>
         <%= link_to root_path do%>
           <i class="fa-regular fa-circle-xmark" style="font-size:24px; color: grey"></i>
         <% end %>
@@ -17,41 +16,136 @@
 
     <div class="dash-card">
 
-      <%= simple_form_for @project, data: { countries: 'form' } do |f| %>
+      <%# FORM START %>
+      <%= simple_form_for @project, html: { id: 'prevent-enter-submit' } do |f| %>
 
         <%# STEP 0 HIDDEN PARAMETERS %>
         <%= f.input :project_status, as: :hidden, input_html: { value: 'pending' } %>
         <%= f.input :project_type, as: :hidden, input_html: { value: 'study' }  %>
         <%= f.input :rfp_status, as: :hidden, input_html: { value: 'pending_admin_validation' } %>
 
-        <%# STEP 1 GENERAL INFOS %>
-        <%= f.input :project_name %>
-        <%= f.input :project_objective %>
-        <%= f.input :project_start %>
+      <%# STEPPER START %>
+
+      <div data-controller="stepper" data-stepper-form-steps-num="0" action="#" class="form">
+        <h4 class="text-center">New Market Study project for <%= current_user.company.name %></h4>
+        <!-- Progress bar -->
+        <div class="progressbar">
+          <div class="progress" data-stepper-target="progress"></div>
+
+          <div
+            class="progress-step progress-step-active"
+            data-stepper-target="progressStep"
+            data-stepper-title="Intro"
+          ></div>
+          <div
+            class="progress-step"
+            data-stepper-target="progressStep"
+            data-stepper-title="Contact"
+          ></div>
+          <div
+            class="progress-step"
+            data-stepper-target="progressStep"
+            data-stepper-title="ID"
+          ></div>
+
+        </div>
+
+        <!-- Steps 1 -->
+        <div class="form-step form-step-active" data-stepper-target="formStep">
+
+          <%# STEP 1 GENERAL INFOS %>
+          <h6>Give a name to this project</h6>
+          <%= f.input :project_name, required: true, label: false, placeholder: 'eg: "Competitor analysis for HR SaaS software in Singapore and Hong Kong"' %>
+          <h6>Now tell us a bit more about what you expect from this study and why</h6>
+          <%= f.input :project_objective, required: true, label: false, as: :text, input_html: { rows: 5 }, placeholder: 'Please give us some insights about your goal, objectives and the reasons why you want to know more about the APAC market.' %>
+
+          <h6>Ideally, when do you want to start?</h6>
+          <%= f.input :project_start, required: true, label: false %>
+
+          <div class="d-flex flex-row-reverse mt-5">
+            <a href="#" class="btn btn-primary btn-next width-50 ml-auto" data-action="stepper#nextStep">Next</a>
+          </div>
+        </div>
+
+        <!-- Steps 2 -->
+        <div class="form-step" data-stepper-target="formStep">
+
+          <%# STEP 2 TARGETING %>
+          <h6>Which countries should be covered in the study?</h6>
+          <%= f.input :target_regions, required: true, label: false, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add regions', closeAfterSelect: false } } } %>
+          <br>
+          <h6>Which industries are we covering here?</h6>
+          <%= f.input :target_industries, label: false, collection: Project::SUBINDUSTRIES, input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: {
+            options: Project::SUBINDUSTRIES,
+            optgroups: Project::SUBINDUSTRIES.group_by { |t| t[:group] }.map { |k, v| { value: k, label: k } },
+            optgroupField: 'group',
+            labelField: 'text',
+            valueField: 'text',
+            plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }
+          } } } %>
+          <br>
+          <h6>What should the study includes?</h6>
+          <p>Select the elements that you want the expert to cover. You can add custom elements too.</p>
+          <%= f.input :study_elements , label: false, collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+          <br>
+          <h6>What format of deliverablle do you want to be included?</h6>
+          <p>Select the elements that you want the expert to cover. You can add custom elements too.</p>
+          <%= f.input :study_deliverables , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+
+          <div class="btns-group  mt-5">
+            <a href="#" class="btn btn-prev btn-primary width-25" data-action="stepper#prevStep">Previous</a>
+            <a href="#" class="btn btn-primary btn-next width-25" data-action="stepper#nextStep">Next</a>
+          </div>
+        </div>
 
 
-        <%# STEP 2 TARGETING %>
 
-        <%= f.input :target_regions, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add regions', closeAfterSelect: false } } } %>
+        <%# Last step %>
+        <div class="form-step" data-stepper-target="formStep">
 
-        <%= f.input :target_industries , collection: Project::INDUSTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select" } } %>
+          <%# STEP 3 PROJECT PARAMETERS %>
+          <h6>PROJECT PARAMETERS</h6>
+          <br>
+          <h6>What is your budget?</h6>
+          <p>Experts wont see this information. But it will help us prioritizing their proposals and improve our services</p>
+          <%= f.input :project_budget, label: false %>
 
-        <%= f.input :study_elements , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
-        <%= f.input :study_deliverables , collection: Project::COUNTRIES, input_html: { multiple: true, data: { controller: "tom-select" } } %>
+          <br>
+          <%= f.input :parameter_incognito, as: :boolean, label: "I prefer to post this mission anonymously. Only the selected expert will know my company details." %>
+          <br>
+          <%= f.input :parameter_terms, as: :boolean, label: "I agree to the terms and conditions of the platform.", required: true, input_html: { required: true } %>
+
+          <div class="btns-group  mt-5">
+            <a href="" class="btn btn-primary btn-prev" data-action="stepper#prevStep">Review</a>
+            <%= f.button :submit, class: "btn btn-primary" %>
+          </div>
+        </div>
+
+      </div>
 
 
+      <%# STEPPER END %>
 
-        <%# STEP 3 PROJECT PARAMETERS %>
-        <%= f.input :project_budget %>
-        <%= f.input :parameter_incognito, as: :boolean %>
-        <%= f.input :parameter_terms, as: :boolean %>
-
-
-        <%= f.button :submit %>
       <% end %>
 
+      <%# FORM END %>
 
     </div>
 
   </div>
 </div>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('prevent-enter-submit');
+
+    form.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+    });
+  });
+</script>

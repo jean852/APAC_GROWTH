@@ -13,3 +13,6 @@ application.register("projectformflow", ProjectformflowController)
 
 import TomSelectController from "./tom_select_controller"
 application.register('tom-select', TomSelectController)
+
+import StepperController from "./stepper_controller"
+application.register('stepper', StepperController)
