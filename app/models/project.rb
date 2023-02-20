@@ -1,4 +1,8 @@
 class Project < ApplicationRecord
+  belongs_to :client, class_name: 'User'
+  belongs_to :expert, class_name: 'User', optional: true
+  belongs_to :company
+
 
   COUNTRIES = [
     "Singapore",

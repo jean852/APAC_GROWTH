@@ -9,13 +9,13 @@
 
   <dl>
     <dt>Client:</dt>
-    <dd><%= @project.client_id || "N/A" %></dd>
+    <dd><%= "#{@project.client.first_name} #{@project.client.last_name.upcase}"  || "N/A" %></dd>
 
     <dt>Company:</dt>
-    <dd><%= @project.company_id || "N/A" %></dd>
+    <dd><%= @project.company.name || "N/A" %></dd>
 
     <dt>Expert:</dt>
-    <dd><%= @project.expert_id || "N/A" %></dd>
+    <dd><%= @project.expert_id || "Not selected" %></dd>
 
     <dt>Status:</dt>
     <dd><%= @project.project_status || "N/A" %></dd>

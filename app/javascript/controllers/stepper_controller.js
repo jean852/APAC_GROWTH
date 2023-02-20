@@ -5,8 +5,10 @@ export default class StepperController extends Controller {
   static values = { formStepsNum: Number };
 
   connect() {
+
     this.updateFormSteps();
     this.updateProgressbar();
+
   }
 
   nextStep() {

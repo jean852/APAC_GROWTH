@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
@@ -16,6 +17,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.client_id = current_user.id
+    @project.company_id = current_user.company_id
 
     if @project.save
       redirect_to @project, notice: "Project was successfully created."
