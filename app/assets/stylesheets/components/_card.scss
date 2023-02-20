@@ -15,3 +15,94 @@
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
 }
+
+
+.dash-card-sm-back {
+  margin: 0 0 10px 0;
+  height: 80px;
+  background: linear-gradient(127deg, #CCFF00 -0.55%, #0085FF 12.09%, #FFFFFF 20.71%);
+  // border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 10px;
+
+
+
+  .ribbon {
+    width: 26px !important;
+    height: 100%;
+  }
+}
+
+.dash-card-sm-body {
+  // background-color: #fff;
+  // opacity: 0.75;
+  // border-radius: 20px;
+  // border: solid 1px #fff;
+  width: 100%;
+  padding: 10px;
+  height: 80px;
+  background: linear-gradient(144.76deg, rgba(255, 255, 255, 0.85) 1.38%, rgba(255, 255, 255, 0.5) 100%);
+  // border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(7.5px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 10px;
+
+  p {
+    font-size: 12px;
+    color: #414141;
+    margin: 0;
+  }
+
+}
+
+
+.card-body {
+  max-height: 200px;
+  overflow-y: auto;
+
+  /* Hide scrollbar for webkit-based browsers */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.rotate {
+  position: relative;
+  height: 150px;
+  width: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.rotate div {
+  transform: translate(-50%, -50%) rotate(270deg);
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+
+
+  p {
+    font-size: 8px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+}
+
+.bubble {
+  background-color: #0085FF50;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #ffffff !important;
+  margin: 0 5px 0 0;
+  padding: 0 5px 0 5px;
+
+    p {
+      color: #414141 !important;
+    }
+  }

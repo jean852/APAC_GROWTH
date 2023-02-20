@@ -41,10 +41,54 @@
                     <h6>Open proposals</h6>
                   </div>
                   <div class="cssgrid-small-div2">
-                    <p>see more</p>
+                    <p>show all</p>
                   </div>
                   <div class="cssgrid-small-div3">
                     <%# CREATE RFP LIST HERE %>
+                    <div class="card-body">
+                      <!-- Your content goes here -->
+
+                      <% @rfpprojects.each do |rfp| %>
+
+                        <div class="dash-card-sm-back d-flex justify-content-left">
+
+                          <div class="ribbon rotate">
+                            <div>
+                              <p><%= rfp.project_type.truncate(12).upcase %></p>
+                            </div>
+                          </div>
+
+                          <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                              <p><%= rfp.project_name.truncate(50) %></p>
+                              <p><%= rfp.created_at.strftime("%b %d, %Y") %></p>
+                              <div class="d-flex flex-row">
+                                <div class="bubble"><%= rfp.target_regions[0] %></div>
+                                <div class="bubble"><%= rfp.target_regions[1] %></div>
+                                <div class="bubble"><%= rfp.target_regions[2] %></div>
+                                <div>
+                                  <% if rfp.target_regions.count > 3 %>
+                                    <p>+<%= rfp.target_regions.count - 3 %></p>
+                                  <% end %>
+                                </div>
+
+                                <%# <% rfp.target_regions.each do |c| %>
+                                  <%# <p><%= "#{c} "</p> %>
+                                <%# <% end %>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                              <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= rfp.project_status.capitalize %></div>
+                              <%= link_to root_path do %>
+                                <p>5 bids received</p>
+                              <% end %>
+                            </div>
+                          </div>
+
+                        </div>
+                      <% end %>
+                    </div>
+
                   </div>
                 </div>
 
@@ -57,7 +101,7 @@
                     <h6>Active projects</h6>
                   </div>
                   <div class="cssgrid-small-div2">
-                    <p>see more</p>
+                    <p>show all</p>
                   </div>
                   <div class="cssgrid-small-div3">
                     <%# CREATE PROJECT LIST HERE %>
