@@ -4,15 +4,17 @@
 
 import { application } from "./application"
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import ProjectformflowController from "./projectformflow_controller"
 application.register("projectformflow", ProjectformflowController)
 
+import StepperController from "./stepper_controller"
+application.register("stepper", StepperController)
 
 import TomSelectController from "./tom_select_controller"
-application.register('tom-select', TomSelectController)
-
-import StepperController from "./stepper_controller"
-application.register('stepper', StepperController)
+application.register("tom-select", TomSelectController)

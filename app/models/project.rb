@@ -44,15 +44,6 @@ class Project < ApplicationRecord
     "Wellness & Fitness"
   ]
 
-  TESTVALUES = [
-    { value: "industry_1", text: "Industry 1", group: "Category 1" },
-    { value: "industry_2", text: "Industry 2", group: "Category 1" },
-    { value: "industry_3", text: "Industry 3", group: "Category 2" },
-    { value: "industry_4", text: "Industry 4", group: "Category 2" },
-    { value: "industry_5", text: "Industry 5", group: "Category 3" },
-    { value: "industry_6", text: "Industry 6", group: "Category 3" }
-  ]
-
   SUBINDUSTRIES = [
     { value: "advertisements", text: "Advertisements", group: "Advertisements" },
     { value: "dairy", text: "Dairy", group: "Agriculture" },
@@ -206,6 +197,90 @@ class Project < ApplicationRecord
     { value: "health,_wellness_&_fitness", text: "Health, Wellness & Fitness", group: "Wellness and Fitness" },
     ]
 
+  STUDYELEMENTS = [
+    {
+      :service=>"Market Analysis",
+      :description=>"Conduct a detailed analysis of the target market including the size, demographics, competition, demand for your product or service, and purchasing power of consumers.",
+      :name=>"market_analysis"
+    },
+    {
+      :service=>"Legal and Regulatory Framework",
+      :description=>"Research the legal and regulatory environment of the target country or region. This includes identifying any legal barriers to entry, local laws and regulations that may affect your business, and any necessary permits and licenses.",
+      :name=>"legal_and_regulatory_framework"
+    },
+    {
+      :service=>"Cultural Analysis",
+      :description=>"Understand the cultural nuances of the target market and how they may impact your business. This includes language, customs, and behaviors.",
+      :name=>"cultural_analysis"
+    },
+    {
+      :service=>"Economic Analysis",
+      :description=>"Analyze the economic conditions of the target market including GDP, inflation, and economic growth rates. Determine the cost of doing business, availability of skilled labor, and the tax and financial policies of the target country or region.",
+      :name=>"economic_analysis"
+    },
+    {
+      :service=>"Political Analysis",
+      :description=>"Assess the political stability of the target country or region and any potential risks associated with investing in the region.",
+      :name=>"political_analysis"
+    },
+    {
+      :service=>"Logistics and Infrastructure",
+      :description=>"Evaluate the logistical and infrastructure needs for your business to operate successfully in the target market. This includes transportation, communication, and technology infrastructure.",
+      :name=>"logistics_and_infrastructure"
+    },
+    {
+      :service=>"Marketing and Sales Strategy",
+      :description=>"Determine how you will promote and sell your product or service in the target market. This includes understanding the local marketing channels, sales channels, and pricing strategies.",
+      :name=>"marketing_and_sales_strategy"
+    },
+    {
+      :service=>"Financial Analysis",
+      :description=>"Create a financial plan that outlines the costs associated with entering the target market, potential revenue streams, and the return on investment over time.",
+      :name=>"financial_analysis"
+    },
+    {
+      :service=>"Risk Analysis",
+      :description=>"Identify and analyze potential risks associated with entering the target market and develop a risk management plan to mitigate those risks.",
+      :name=>"risk_analysis"
+    },
+    {
+      :service=>"Human Resources",
+      :description=>"Develop a human resources plan that includes the recruitment and retention of local talent, compliance with local labor laws, and the training and development of your employees.",
+      :name=>"human_resources"
+    }
+  ]
 
+  DELIVERABLES = [
+    {
+      deliverable: 'Written Reports',
+      description: 'Comprehensive report that summarizes the consultant\'s findings and recommendations',
+      name: 'written_reports'
+    },
+    {
+      deliverable: 'Presentations',
+      description: 'Summary presentation of the key findings and recommendations of the study',
+      name: 'presentations'
+    },
+    {
+      deliverable: 'Data Sets',
+      description: 'Raw data sets collected and analyzed by the consultant',
+      name: 'data_sets'
+    },
+    {
+      deliverable: 'Implementation Plans',
+      description: 'Detailed plan for how to implement the consultant\'s recommendations',
+      name: 'implementation_plans'
+    },
+    {
+      deliverable: 'Training Materials',
+      description: 'Materials to help your team adopt new processes or technologies',
+      name: 'training_materials'
+    },
+    {
+      deliverable: 'Follow-up Support',
+      description: 'Ongoing support after the study is completed',
+      name: 'follow-up_support'
+    }
+  ]
 
 end
