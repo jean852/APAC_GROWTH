@@ -49,6 +49,8 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 
+gem 'faker'
+
 # Gems that I added specifically for the project
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem "omniauth-linkedin-oauth2"
