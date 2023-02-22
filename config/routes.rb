@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   get "client", to: "pages#dashboardclient"
+  get "client/projects", to: "projects#clientprojects"
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

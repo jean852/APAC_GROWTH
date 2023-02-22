@@ -6,7 +6,12 @@ class ProjectsController < ApplicationController
   # BASIC CRUD
   def index
     @projects = Project.all
+
+    if params[:client_id].present?
+      @projects = @projects.where(client_id: params[:client_id])
+    end
   end
+
 
   def show
 
@@ -39,6 +44,14 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # Project Pages for Client
+
+  def clientprojects
+    @rfpprojects = Project.where(client_id: current_user.id, project_status: ["pending_validation", "pending_deposit", "active_rfp"])
+    @activeprojects = Project.where(client_id: current_user.id, project_status: ["active", "pending_resolution"])
+    @archivedprojects = Project.where(client_id: current_user.id, project_status: ["closed", "cancelled"])
   end
 
   # 4 DIFFERENT FORM TO INPUT PROJECTS
