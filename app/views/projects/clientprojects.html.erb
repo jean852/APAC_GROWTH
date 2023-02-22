@@ -7,17 +7,14 @@
     <div class="flex-container-sec">
 
       <div class="flex-items-sec">
-        <%# MAIN CONTENT GOES HERE / WITH CSSGRID %>
 
 
-        <%# TO BE REPLACED BY A FLEXBOX GRID SYSTEM %>
-        <%# -------------------------------------- %>
         <div class="dash-container">
 
           <div class="section-title d-flex flex-row justify-content-between">
             <h1>Project Board</h1>
             <%= link_to  new_project_path do %>
-                <button type="button" class="btn btn-primary shadow">Start a new Project</button>
+                <button type="button" id="create-project-btn"class="btn btn-primary shadow">Start a new Project</button>
               <% end %>
           </div>
 
@@ -35,11 +32,10 @@
           </div>
 
           <%# RFP Projects / Pending validation / Pending Payment %>
-          <section class="">
-            <div class="dash-card">
+          <div class="dash-card project-list-container">
+            <section class="">
               <div class="list-body">
                 <!-- Your content goes here -->
-
                 <% @rfpprojects.each do |rfp| %>
 
                   <div class="dash-card-sm-back d-flex justify-content-left">
@@ -49,20 +45,23 @@
                         <p><%= rfp.project_type.truncate(12).upcase %></p>
                       </div>
                     </div>
-
                     <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
                       <div class="d-flex flex-column justify-content-between flex-grow w-75">
                         <p><%= rfp.project_name.truncate(50) %></p>
                         <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
                         <div class="d-flex flex-row">
                           <div class="bubble"><%= rfp.target_regions[0] %></div>
-                          <div class="bubble"><%= rfp.target_regions[1] %></div>
-                          <div class="bubble"><%= rfp.target_regions[2] %></div>
-                          <div class="bubble">
-                            <% if rfp.target_regions.count > 3 %>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
                               +<%= rfp.target_regions.count - 3 %>
-                            <% end %>
-                          </div>
+                            </div>
+                          <% end %>
                         </div>
                       </div>
                       <div class="d-flex flex-column w-25 justify-content-between align-items-end">
@@ -72,42 +71,39 @@
                         <% end %>
                       </div>
                     </div>
-
                   </div>
                 <% end %>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <%# Active Projects / Resolution %>
-          <section class="">
-            <div class="dash-card">
+            <%# Active Projects / Resolution %>
+            <section class="">
               <div class="list-body">
                 <!-- Your content goes here -->
-
                 <% @activeprojects.each do |rfp| %>
-
                   <div class="dash-card-sm-back d-flex justify-content-left">
-
                     <div class="ribbon rotate">
                       <div>
                         <p><%= rfp.project_type.truncate(12).upcase %></p>
                       </div>
                     </div>
-
                     <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
                       <div class="d-flex flex-column justify-content-between flex-grow w-75">
                         <p><%= rfp.project_name.truncate(50) %></p>
                         <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
                         <div class="d-flex flex-row">
                           <div class="bubble"><%= rfp.target_regions[0] %></div>
-                          <div class="bubble"><%= rfp.target_regions[1] %></div>
-                          <div class="bubble"><%= rfp.target_regions[2] %></div>
-                          <div class="bubble">
-                            <% if rfp.target_regions.count > 3 %>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
                               +<%= rfp.target_regions.count - 3 %>
-                            <% end %>
-                          </div>
+                            </div>
+                          <% end %>
                         </div>
                       </div>
                       <div class="d-flex flex-column w-25 justify-content-between align-items-end">
@@ -117,42 +113,39 @@
                         <% end %>
                       </div>
                     </div>
-
                   </div>
                 <% end %>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <%# Closed / Cancelled / Archived Projects %>
-          <section class="">
-            <div class="dash-card">
+            <%# Closed / Cancelled / Archived Projects %>
+            <section class="">
               <div class="list-body">
                 <!-- Your content goes here -->
-
                 <% @archivedprojects.each do |rfp| %>
-
                   <div class="dash-card-sm-back d-flex justify-content-left">
-
                     <div class="ribbon rotate">
                       <div>
                         <p><%= rfp.project_type.truncate(12).upcase %></p>
                       </div>
                     </div>
-
                     <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
                       <div class="d-flex flex-column justify-content-between flex-grow w-75">
                         <p><%= rfp.project_name.truncate(50) %></p>
                         <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
                         <div class="d-flex flex-row">
                           <div class="bubble"><%= rfp.target_regions[0] %></div>
-                          <div class="bubble"><%= rfp.target_regions[1] %></div>
-                          <div class="bubble"><%= rfp.target_regions[2] %></div>
-                          <div class="bubble">
-                            <% if rfp.target_regions.count > 3 %>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
                               +<%= rfp.target_regions.count - 3 %>
-                            <% end %>
-                          </div>
+                            </div>
+                          <% end %>
                         </div>
                       </div>
                       <div class="d-flex flex-column w-25 justify-content-between align-items-end">
@@ -162,12 +155,14 @@
                         <% end %>
                       </div>
                     </div>
-
                   </div>
                 <% end %>
               </div>
+            </section>
+            <div>
+              <p style="margin-top:20px; margin-bottom: -10px; font-size: 8px;">If you don't see your project here, please contact support here.</p>
             </div>
-          </section>
+          </div>
 
 
 

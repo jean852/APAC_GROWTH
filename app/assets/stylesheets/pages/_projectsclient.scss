@@ -23,3 +23,24 @@
   height: 40px;
   flex: 1 1 0%;
 }
+
+
+.project-list-container {
+
+  min-height: 600px;
+}
+
+
+@media screen and (max-width: 835px) {
+  #create-project-btn{
+    margin-right: 60px;
+  }
+
+  .section-title {
+    flex-wrap: wrap;
+  }
+
+  .taboption {
+    width: 100%;
+  }
+}
