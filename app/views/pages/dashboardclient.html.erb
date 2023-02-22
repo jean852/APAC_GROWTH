@@ -37,14 +37,56 @@
               <div class="dash-card top-left-component">
                 <%# RFP BOX / CSS GRID %>
                 <div class="cssgrid-small-parent">
-                  <div class="cssgrid-small-div1">
-                    <h6>Open proposals</h6>
+                  <div class="cssgrid-small-div1 d-flex flex-row">
+                    <div><h6 class="bubble" style="padding: 3px 6px 3px 6px; background-color: #0D6EFD; border-radius: 7px"><%= @rfpprojects.count %></h6></div>
+
+                    <h6>Request for proposal</h6>
                   </div>
                   <div class="cssgrid-small-div2">
-                    <p>see more</p>
+                    <p>show all</p>
                   </div>
                   <div class="cssgrid-small-div3">
                     <%# CREATE RFP LIST HERE %>
+                    <div class="card-body">
+                      <!-- Your content goes here -->
+
+                      <% @rfpprojects.each do |rfp| %>
+
+                        <div class="dash-card-sm-back d-flex justify-content-left">
+
+                          <div class="ribbon rotate">
+                            <div>
+                              <p><%= rfp.project_type.truncate(12).upcase %></p>
+                            </div>
+                          </div>
+
+                          <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                              <p><%= rfp.project_name.truncate(50) %></p>
+                              <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
+                              <div class="d-flex flex-row">
+                                <div class="bubble"><%= rfp.target_regions[0] %></div>
+                                <div class="bubble"><%= rfp.target_regions[1] %></div>
+                                <div class="bubble"><%= rfp.target_regions[2] %></div>
+                                <div class="bubble">
+                                  <% if rfp.target_regions.count > 3 %>
+                                    +<%= rfp.target_regions.count - 3 %>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                              <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= rfp.project_status.capitalize %></div>
+                              <%= link_to root_path do %>
+                                <p>5 proposals</p>
+                              <% end %>
+                            </div>
+                          </div>
+
+                        </div>
+                      <% end %>
+                    </div>
+
                   </div>
                 </div>
 
@@ -53,14 +95,54 @@
               <div class="dash-card bottom-left-component">
                 <%# PROJECT BOX / CSS GRID%>
                 <div class="cssgrid-small-parent">
-                  <div class="cssgrid-small-div1">
+                  <div class="cssgrid-small-div1 d-flex flex-row">
+                    <div><h6 class="bubble" style="padding: 3px 6px 3px 6px; background-color: #CCFF00; color: #414141 !important; border-radius: 7px"><%= @activeprojects.count %></h6></div>
                     <h6>Active projects</h6>
                   </div>
                   <div class="cssgrid-small-div2">
-                    <p>see more</p>
+                    <p>show all</p>
                   </div>
                   <div class="cssgrid-small-div3">
-                    <%# CREATE PROJECT LIST HERE %>
+                    <%# CREATE RFP LIST HERE %>
+                    <div class="card-body">
+                      <!-- Your content goes here -->
+
+                      <% @activeprojects.each do |project| %>
+
+                        <div class="dash-card-sm-back d-flex justify-content-left">
+
+                          <div class="ribbon rotate">
+                            <div>
+                              <p><%= project.project_type.truncate(12).upcase %></p>
+                            </div>
+                          </div>
+
+                          <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                              <p><%= project.project_name.truncate(50) %></p>
+                              <p>Created on <%= project.created_at.strftime("%b %d, %Y") %></p>
+                              <div class="d-flex flex-row">
+                                <div class="bubble"><%= project.target_regions[0] %></div>
+                                <div class="bubble"><%= project.target_regions[1] %></div>
+                                <div class="bubble"><%= project.target_regions[2] %></div>
+                                <div class="bubble">
+                                  <% if project.target_regions.count > 3 %>
+                                    +<%= project.target_regions.count - 3 %>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                              <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= project.project_status.capitalize %></div>
+                              <%= link_to root_path do %>
+                                <p>5 proposals</p>
+                              <% end %>
+                            </div>
+                          </div>
+
+                        </div>
+                      <% end %>
+                    </div>
 
                   </div>
                 </div>

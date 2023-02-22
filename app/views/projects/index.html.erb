@@ -1,0 +1,87 @@
+<h1>All Projects</h1>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Client</th>
+      <th>Company</th>
+      <th>Expert</th>
+      <th>Project Status</th>
+      <th>Project Type</th>
+      <th>Bidding Start</th>
+      <th>Bidding End</th>
+      <th>RFP Status</th>
+      <th>Project Start</th>
+      <th>Project End</th>
+      <th>Project Budget</th>
+      <th>Project Price</th>
+      <th>Project Duration</th>
+      <th>Project Objective</th>
+      <th>Intros Quantity</th>
+      <th>Intros Type</th>
+      <th>Target Industries</th>
+      <th>Target Regions</th>
+      <th>Target Type</th>
+      <th>Target Size</th>
+      <th>Target Company</th>
+      <th>Target URL</th>
+      <th>Target Country</th>
+      <th>Target Name</th>
+      <th>Target Ideal</th>
+      <th>Target Seniority</th>
+      <th>Target Jobtitle</th>
+      <th>Study Elements</th>
+      <th>Study Deliverables</th>
+      <th>Project Expert Fee</th>
+      <th>Project Platform Fee</th>
+      <th>Project Payment Fee</th>
+      <th>Parameter Incognito</th>
+      <th>Parameter Terms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.project_name %></td>
+        <td><%= project.client_id %></td>
+        <td><%= project.company.name %></td>
+        <td><%= project.expert_id %></td>
+        <td><%= project.project_status %></td>
+        <td><%= project.project_type %></td>
+        <td><%= project.bidding_start %></td>
+        <td><%= project.bidding_end %></td>
+        <td><%= project.rfp_status %></td>
+        <td><%= project.project_start %></td>
+        <td><%= project.project_end %></td>
+        <td><%= project.project_budget %></td>
+        <td><%= project.project_price %></td>
+        <td><%= project.project_duration %></td>
+        <td><%= project.project_objective %></td>
+        <td><%= project.intros_quantity %></td>
+        <td><%= project.intros_type.join(", ") %></td>
+        <td><%= project.target_industries.join(", ") %></td>
+        <td><%= project.target_regions.join(", ") %></td>
+        <td><%= project.target_type %></td>
+        <td><%= project.target_size %></th>
+        <td><%= project.target_size.join(", ") %></td>
+        <td><%= project.target_company %></td>
+        <td><%= project.target_url %></td>
+        <td><%= project.target_country %></td>
+        <td><%= project.target_name %></td>
+        <td><%= project.target_ideal %></td>
+        <td><%= project.target_seniority.join(", ") %></td>
+        <td><%= project.target_jobtitle.join(", ") %></td>
+        <td><%= project.study_elements.join(", ") %></td>
+        <td><%= project.study_deliverables.join(", ") %></td>
+        <td><%= project.project_expert_fee %></td>
+        <td><%= project.project_platform_fee %></td>
+        <td><%= project.project_payment_fee %></td>
+        <td><%= project.parameter_incognito ? "Yes" : "No" %></td>
+        <td><%= project.parameter_terms ? "Yes" : "No" %></td>
+        </tr>
+        <% end %>
+
+  </tbody>
+</table>

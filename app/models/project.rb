@@ -16,6 +16,68 @@ class Project < ApplicationRecord
     "Vietnam"
   ]
 
+  ASIANCOUNTRIES = [ "Afghanistan", "Bahrain", "Bangladesh", "Bhutan", "Brunei", "Cambodia", "China", "India", "Indonesia", "Iran", "Iraq", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Kyrgyzstan", "Laos", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Myanmar (Burma)", "Nepal", "North Korea", "Oman", "Pakistan", "Palestine", "Philippines", "Qatar", "Russia", "Saudi Arabia", "Singapore", "South Korea", "Sri Lanka", "Syria", "Taiwan", "Tajikistan", "Thailand", "Timor-Leste (East Timor)", "Turkey", "Turkmenistan", "United Arab Emirates (UAE)", "Uzbekistan", "Vietnam", "Yemen", "Hong Kong", "Macau"]
+
+  COUNTRY_REGIONS = {
+    "Central Asia" => ["Kazakhstan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Uzbekistan"],
+    "East Asia" => ["China", "Japan", "Mongolia", "North Korea", "South Korea", "Taiwan", "Hong Kong", "Macau"],
+    "South Asia" => ["Afghanistan", "Bangladesh", "Bhutan", "India", "Maldives", "Nepal", "Pakistan", "Sri Lanka"],
+    "Southeast Asia" => ["Brunei", "Cambodia", "Indonesia", "Laos", "Malaysia", "Myanmar (Burma)", "Philippines", "Singapore", "Thailand", "Timor-Leste (East Timor)", "Vietnam"],
+    "West Asia" => ["Bahrain", "Cyprus", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Syria", "Turkey", "United Arab Emirates (UAE)", "Yemen"]
+  }
+
+  # ALWAYS PREFER THIS TABLE AS IT IS EASIER TO CHANGE THE INCLSION OR REMOVAL OF COUNTRIES
+  COUNTRIES_WITH_REGIONS = [
+    { value: "afghanistan", text: "Afghanistan", group: "South Asia", included: false },
+    { value: "bahrain", text: "Bahrain", group: "West Asia", included: false },
+    { value: "bangladesh", text: "Bangladesh", group: "South Asia", included: false },
+    { value: "bhutan", text: "Bhutan", group: "South Asia", included: false },
+    { value: "brunei", text: "Brunei", group: "Southeast Asia", included: false },
+    { value: "cambodia", text: "Cambodia", group: "Southeast Asia", included: true },
+    { value: "china", text: "China", group: "East Asia", included: false },
+    { value: "hong_kong", text: "Hong Kong", group: "East Asia", included: true },
+    { value: "india", text: "India", group: "South Asia", included: false },
+    { value: "indonesia", text: "Indonesia", group: "Southeast Asia", included: true },
+    { value: "iran", text: "Iran", group: "West Asia", included: false },
+    { value: "iraq", text: "Iraq", group: "West Asia", included: false },
+    { value: "israel", text: "Israel", group: "West Asia", included: false },
+    { value: "japan", text: "Japan", group: "East Asia", included: false },
+    { value: "jordan", text: "Jordan", group: "West Asia", included: false },
+    { value: "kazakhstan", text: "Kazakhstan", group: "Central Asia", included: false },
+    { value: "kuwait", text: "Kuwait", group: "West Asia", included: false },
+    { value: "kyrgyzstan", text: "Kyrgyzstan", group: "Central Asia", included: false },
+    { value: "laos", text: "Laos", group: "Southeast Asia", included: false },
+    { value: "lebanon", text: "Lebanon", group: "West Asia", included: false },
+    { value: "malaysia", text: "Malaysia", group: "Southeast Asia", included: true },
+    { value: "maldives", text: "Maldives", group: "South Asia", included: false },
+    { value: "mongolia", text: "Mongolia", group: "East Asia", included: false },
+    { value: "myanmar_burma", text: "Myanmar (Burma)", group: "Southeast Asia", included: false },
+    { value: "nepal", text: "Nepal", group: "South Asia", included: false },
+    { value: "north_korea", text: "North Korea", group: "East Asia", included: false },
+    { value: "oman", text: "Oman", group: "West Asia", included: false },
+    { value: "pakistan", text: "Pakistan", group: "South Asia", included: false },
+    { value: "palestine", text: "Palestine", group: "West Asia", included: false },
+    { value: "philippines", text: "Philippines", group: "Southeast Asia", included: true },
+    { value: "qatar", text: "Qatar", group: "West Asia", included: false },
+    { value: "russia", text: "Russia", group: "Other", included: false },
+    { value: "saudi_arabia", text: "Saudi Arabia", group: "West Asia", included: true },
+    { value: "singapore", text: "Singapore", group: "Southeast Asia", included: true },
+    { value: "south_korea", text: "South Korea", group: "East Asia", included: false },
+    { value: "sri_lanka", text: "Sri Lanka", group: "South Asia", included: false },
+    { value: "syria", text: "Syria", group: "West Asia", included: false },
+    { value: "taiwan", text: "Taiwan", group: "East Asia", included: false },
+    { value: "tajikistan", text: "Tajikistan", group: "Central Asia", included: false },
+    { value: "thailand", text: "Thailand", group: "Southeast Asia", included: true },
+    { value: "timor_leste_east_timor", text: "Timor-Leste (East Timor)", group: "Southeast Asia", included: false },
+    { value: "turkey", text: "Turkey", group: "West Asia", included: false },
+    { value: "turkmenistan", text: "Turkmenistan", group: "Central Asia", included: false },
+    { value: "united_arab_emirates_uae", text: "United Arab Emirates (UAE)", group: "West Asia", included: false },
+    { value: "uzbekistan", text: "Uzbekistan", group: "Central Asia", included: false },
+    { value: "vietnam", text: "Vietnam", group: "Southeast Asia", included: true },
+    { value: "yemen", text: "Yemen", group: "West Asia", included: false }
+  ]
+
+  # REFERENCES FOR INDUSTRIES AND NICHES / BASED ON LINKEDIN 2021 LIST
   INDUSTRIES = [
     "Agriculture",
     "Arts",
@@ -197,7 +259,9 @@ class Project < ApplicationRecord
     { value: "health,_wellness_&_fitness", text: "Health, Wellness & Fitness", group: "Wellness and Fitness" },
     ]
 
-  STUDYELEMENTS = [
+
+
+    STUDYELEMENTS = [
     {
       :service=>"Market Analysis",
       :description=>"Conduct a detailed analysis of the target market including the size, demographics, competition, demand for your product or service, and purchasing power of consumers.",
@@ -250,6 +314,8 @@ class Project < ApplicationRecord
     }
   ]
 
+
+  # REFERENCE FOR STUDIES DELEVRABLES  / USE IT AS MUCH AS POSSIBLE
   DELIVERABLES = [
     {
       deliverable: 'Written Reports',
@@ -280,6 +346,38 @@ class Project < ApplicationRecord
       deliverable: 'Follow-up Support',
       description: 'Ongoing support after the study is completed',
       name: 'follow-up_support'
+    }
+  ]
+
+  # REFERENCE FOR PROJECT STATUS / USE IT AS MUCH AS POSSIBLE
+  PROJECTSTATUS = [
+    {
+      status: 'Pending Validation',
+      name: 'pending_validation'
+    },
+    {
+      status: 'Active RFP',
+      name: 'rfp_stage'
+    },
+    {
+      status: 'Pending Deposit',
+      name: 'pending_payment'
+    },
+    {
+      status: 'Active',
+      name: 'active'
+    },
+    {
+      status: 'Ongoing Resolution',
+      name: 'pending_resolution'
+    },
+    {
+      status: 'Closed',
+      name: 'closed'
+    },
+    {
+      status: 'Cancelled',
+      name: 'cancelled'
     }
   ]
 

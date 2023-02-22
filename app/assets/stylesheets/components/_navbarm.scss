@@ -27,6 +27,7 @@ body{
   font-size: 50px;
   font-weight: 500;
   cursor: pointer;
+  z-index: 888887;
 }
 
 /* overlay (background) */
@@ -34,7 +35,7 @@ body{
   height: 0%;
   width: 100%;
   position: fixed;
-  z-index: 9999999;
+  z-index: 888888;
   left: 0;
   top: 0;
   background-color: rgb(51,51,51);
@@ -55,12 +56,24 @@ body{
   font-size: 60px;
 }
 
+.closebtn{
+  position: absolute;
+  top: 0px;
+  right: 30px;
+  color: rgb(255,255,255);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 60px;
+}
+.closebtn:hover {
+  color:#CCFF00;
+}
 
 /* Position the content inside the overlay */
 .overlay-content{
   position: relative;
   top: 15%;
-  margin: 20px;
+  // margin: 20px;
   width: 100%;
   text-align: center;
   margin-top: 30px;
@@ -83,10 +96,10 @@ body{
 
 .overlay-content a:hover,
 .overlay-content a:focus{
-  color: rgb(0, 0, 0) !important;
-  background: rgb(255, 255, 255);
+  color: #414141 !important;
+  background: #CCFF00;
   transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
   padding-left: 30px;

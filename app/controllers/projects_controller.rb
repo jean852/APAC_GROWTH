@@ -1,10 +1,17 @@
+
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
+
 
   # BASIC CRUD
   def index
     @projects = Project.all
+
+    if params[:client_id].present?
+      @projects = @projects.where(client_id: params[:client_id])
+    end
   end
+
 
   def show
 
@@ -18,6 +25,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.client_id = current_user.id
     @project.company_id = current_user.company_id
+    clean_arrays
 
     if @project.save
       redirect_to @project, notice: "Project was successfully created."
@@ -36,6 +44,14 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # Project Pages for Client
+
+  def clientprojects
+    @rfpprojects = Project.where(client_id: current_user.id, project_status: ["pending_validation", "pending_deposit", "active_rfp"])
+    @activeprojects = Project.where(client_id: current_user.id, project_status: ["active", "pending_resolution"])
+    @archivedprojects = Project.where(client_id: current_user.id, project_status: ["closed", "cancelled"])
   end
 
   # 4 DIFFERENT FORM TO INPUT PROJECTS
@@ -63,6 +79,12 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def clean_arrays
+    @project.attributes.each do |attr, value|
+      @project[attr] = value.reject(&:empty?) if value.is_a?(Array)
+    end
   end
 
   def project_params

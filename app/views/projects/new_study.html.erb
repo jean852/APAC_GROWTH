@@ -75,8 +75,9 @@
 
           <%# STEP 2 TARGETING %>
           <h6>Which countries should be covered in the study?</h6>
-          <%= f.input :target_regions, required: true, label: false, collection: Project::COUNTRIES.sort , input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add countries', closeAfterSelect: false } } } %>
+          <%= f.input :target_regions, required: true, label: false, collection: Project::COUNTRIES_WITH_REGIONS.select { |country| country[:included] }.map { |country| country[:text] }, input_html: { multiple: true, data: { controller: "tom-select", tom_select_options_value: { tags: true, persist: false, create: true, allowEmptyOption: true, plugins: { remove_button: { title: 'Remove this item' }, dropdown_input: { }  }, placeholder: 'Add countries', closeAfterSelect: false } } } %>
           <br>
+
 
 
 

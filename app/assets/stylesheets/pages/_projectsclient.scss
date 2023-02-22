@@ -1,0 +1,46 @@
+.tab-option {
+  width: 200px;
+  text-align: center;
+}
+
+
+.list-body {
+  max-height: 600px;
+  overflow-y: auto;
+
+  /* Hide scrollbar for webkit-based browsers */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.filter-banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 40px;
+  flex: 1 1 0%;
+}
+
+
+.project-list-container {
+
+  min-height: 600px;
+}
+
+
+@media screen and (max-width: 835px) {
+  #create-project-btn{
+    margin-right: 60px;
+  }
+
+  .section-title {
+    flex-wrap: wrap;
+  }
+
+  .taboption {
+    width: 100%;
+  }
+}

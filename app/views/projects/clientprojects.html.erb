@@ -1,0 +1,195 @@
+<%= render "shared/navbarm" %>
+<div class="flex-container" id="backdrop">
+  <div class="flex-items">
+    <%= render "shared/navbar2" %>
+  </div>
+  <div class="flex-items">
+    <div class="flex-container-sec">
+
+      <div class="flex-items-sec">
+
+
+        <div class="dash-container">
+
+          <div class="section-title d-flex flex-row justify-content-between">
+            <h1>Project Board</h1>
+            <%= link_to  new_project_path do %>
+                <button type="button" id="create-project-btn"class="btn btn-primary shadow">Start a new Project</button>
+              <% end %>
+          </div>
+
+          <div class="dash-card filter-banner">
+            <div class="tab-option">
+              <h6>RFP (<%= @rfpprojects.count %>)</h6>
+            </div>
+            <div class="tab-option">
+              <h6>Active Projects (<%= @activeprojects.count %>)</h6>
+            </div>
+
+            <div class="tab-option">
+              <h6>Archived (<%= @archivedprojects.count %>)</h6>
+            </div>
+          </div>
+
+          <%# RFP Projects / Pending validation / Pending Payment %>
+          <div class="dash-card project-list-container">
+            <section class="">
+              <div class="list-body">
+                <!-- Your content goes here -->
+                <% @rfpprojects.each do |rfp| %>
+
+                  <div class="dash-card-sm-back d-flex justify-content-left">
+
+                    <div class="ribbon rotate">
+                      <div>
+                        <p><%= rfp.project_type.truncate(12).upcase %></p>
+                      </div>
+                    </div>
+                    <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                      <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                        <p><%= rfp.project_name.truncate(50) %></p>
+                        <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
+                        <div class="d-flex flex-row">
+                          <div class="bubble"><%= rfp.target_regions[0] %></div>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
+                              +<%= rfp.target_regions.count - 3 %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                        <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= rfp.project_status.capitalize %></div>
+                        <%= link_to root_path do %>
+                          <p>5 proposals</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </section>
+
+            <%# Active Projects / Resolution %>
+            <section class="">
+              <div class="list-body">
+                <!-- Your content goes here -->
+                <% @activeprojects.each do |rfp| %>
+                  <div class="dash-card-sm-back d-flex justify-content-left">
+                    <div class="ribbon rotate">
+                      <div>
+                        <p><%= rfp.project_type.truncate(12).upcase %></p>
+                      </div>
+                    </div>
+                    <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                      <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                        <p><%= rfp.project_name.truncate(50) %></p>
+                        <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
+                        <div class="d-flex flex-row">
+                          <div class="bubble"><%= rfp.target_regions[0] %></div>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
+                              +<%= rfp.target_regions.count - 3 %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                        <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= rfp.project_status.capitalize %></div>
+                        <%= link_to root_path do %>
+                          <p>5 proposals</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </section>
+
+            <%# Closed / Cancelled / Archived Projects %>
+            <section class="">
+              <div class="list-body">
+                <!-- Your content goes here -->
+                <% @archivedprojects.each do |rfp| %>
+                  <div class="dash-card-sm-back d-flex justify-content-left">
+                    <div class="ribbon rotate">
+                      <div>
+                        <p><%= rfp.project_type.truncate(12).upcase %></p>
+                      </div>
+                    </div>
+                    <div class="dash-card-sm-body flex-grow d-flex flex-row justify-content-between">
+                      <div class="d-flex flex-column justify-content-between flex-grow w-75">
+                        <p><%= rfp.project_name.truncate(50) %></p>
+                        <p>Created on <%= rfp.created_at.strftime("%b %d, %Y") %></p>
+                        <div class="d-flex flex-row">
+                          <div class="bubble"><%= rfp.target_regions[0] %></div>
+                          <% if rfp.target_regions[1].present? %>
+                            <div class="bubble"><%= rfp.target_regions[1] %></div>
+                          <% end %>
+                          <% if rfp.target_regions[2].present? %>
+                            <div class="bubble"><%= rfp.target_regions[2] %></div>
+                          <% end %>
+                          <% if rfp.target_regions.count > 3 %>
+                            <div class="bubble">
+                              +<%= rfp.target_regions.count - 3 %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column w-25 justify-content-between align-items-end">
+                        <div class="bubble" style="margin: 0; background-color: #CCFF0050; color: #414141 !important"><%= rfp.project_status.capitalize %></div>
+                        <%= link_to root_path do %>
+                          <p>5 proposals</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </section>
+            <div>
+              <p style="margin-top:20px; margin-bottom: -10px; font-size: 8px;">If you don't see your project here, please contact support here.</p>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="figures-box">
+
+
+          </div>
+        </div>
+        <%# -------------------------------------- %>
+
+      </div>
+
+      <%# MAKE SURE THIS PART CAN WRAP DOWN %>
+      <div class="flex-items-sec">
+        <%# RIGHT SIDE BAR %>
+        <h1>Right side content</h1>
+      </div>
+
+
+    </div>
+  </div>
+</div>

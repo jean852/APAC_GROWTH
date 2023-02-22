@@ -16,8 +16,10 @@
     </li> %>
     <li>
       <a href="#">
-        <i class='bx bx-grid-alt'></i>
-        <span class="links_name">Dashboard</span>
+        <%= link_to  client_path do%>
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        <% end %>
       </a>
       <span class="tooltip">Dashboard</span>
     </li>
@@ -26,17 +28,19 @@
 
   <li>
     <a href="#">
-      <i class='bx bx-paste' ></i>
-      <span class="links_name">My Proposals</span>
+      <%= link_to  client_projects_path do%>
+        <i class='bx bx-flag' ></i>
+        <span class="links_name">Projects</span>
+      <% end %>
     </a>
-    <span class="tooltip">My Proposals</span>
+    <span class="tooltip">Projects</span>
   </li>
   <li>
     <a href="#">
-      <i class='bx bx-flag' ></i>
-      <span class="links_name">Projects</span>
+      <i class='bx bx-paste' ></i>
+      <span class="links_name">Received proposals</span>
     </a>
-    <span class="tooltip">Projects</span>
+    <span class="tooltip">Received Proposals</span>
   </li>
   <li class='border-top pt-3 mt-3'>
     <a href="#">

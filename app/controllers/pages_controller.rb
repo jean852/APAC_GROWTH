@@ -9,5 +9,9 @@ class PagesController < ApplicationController
 
   def dashboardclient
     redirect_to new_company_path if current_user.company.nil?
+
+    @rfpprojects = Project.where(client_id: current_user.id, project_status: ['rfp_stage', 'pending_validation', 'pending_payment'])
+    @activeprojects = Project.where(client_id: current_user.id, project_status: ['active', 'pending_resolution'])
+
   end
 end
